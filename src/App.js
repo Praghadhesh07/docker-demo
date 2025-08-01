@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Git from './components/git';
+import Jenkins from './components/jenkins';
+import Docker from './components/docker';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ textAlign: 'center' }}>
+      <h1>Hello World!!!</h1>
+
+      <Router>
+        <nav style={{ marginBottom: '20px' }}>
+          <Link to="/git">Git</Link> |{" "}
+          <Link to="/docker">Docker</Link> |{" "}
+          <Link to="/jenkins">Jenkins</Link>
+        </nav>
+
+        <Routes>
+          <Route path="/git" element={<Git />} />
+          <Route path="/docker" element={<Docker />} />
+          <Route path="/jenkins" element={<Jenkins />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
